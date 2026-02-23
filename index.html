@@ -389,67 +389,86 @@
                     
                     <!-- Formspree Integration Form -->
                     <!-- IMPORTANT: Replace YOUR_FORM_ID with your actual Formspree form ID -->
-                    <form id="contactForm" action=""https://formsubmit.co/mugishabillychriss@gmail.com" method="POST" class="contact-form">
-                        <!-- Formspree requires this redirect field -->
-                        <input type="hidden" name="_redirect" value="https://yourdomain.com/thank-you.html">
-                        <!-- Alternative: Use _next to redirect to a custom URL -->
-                        <!-- <input type="hidden" name="_next" value="https://yourdomain.com/thank-you.html"> -->
-                        
-                        <!-- Optional: Format email replies -->
-                        <input type="hidden" name="_replyto" value="email">
-                        
-                        <!-- Optional: Subject prefix -->
-                        <input type="hidden" name="_subject" value="New message from Billan website!">
-                        
-                        <div class="form-group">
-                            <label for="name">
-                                <i class="fas fa-user"></i>
-                                Your Name
-                            </label>
-                            <input type="text" id="name" name="name" placeholder="John Doe" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="email">
-                                <i class="fas fa-envelope"></i>
-                                Email Address
-                            </label>
-                            <input type="email" id="email" name="email" placeholder="john@example.com" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="subject">
-                                <i class="fas fa-tag"></i>
-                                Subject
-                            </label>
-                            <input type="text" id="subject" name="subject" placeholder="Project Inquiry">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="message">
-                                <i class="fas fa-comment"></i>
-                                Your Message
-                            </label>
-                            <textarea id="message" name="message" placeholder="Tell us about your project..." required></textarea>
-                        </div>
-                        
-                        <!-- Custom checkbox for consent -->
-                        <div class="form-checkbox">
-                            <input type="checkbox" id="consent" name="consent" required>
-                            <label for="consent">I agree to be contacted regarding my inquiry</label>
-                        </div>
-                        
-                        <!-- Honeypot field to prevent spam (hidden from real users) -->
-                        <input type="text" name="_gotcha" style="display:none">
-                        
-                        <button type="submit" class="btn-submit" id="submitBtn">
-                            <span class="btn-text">Send Message</span>
-                            <i class="fas fa-paper-plane"></i>
-                        </button>
-                        
-                        <!-- Form status message -->
-                        <div class="form-status" id="formStatus"></div>
-                    </form>
+                   <form id="contactForm" action="https://formsubmit.co/mugishabillychriss@gmail.com" method="POST" class="contact-form">
+    
+    <!-- FormSubmit Configuration (Different from Formspree) -->
+    
+    <!-- Redirect after successful submission -->
+    <input type="hidden" name="_next" value="https://yourdomain.com/thank-you.html">
+    
+    <!-- Email subject line -->
+    <input type="hidden" name="_subject" value="🌱 New message from Billan website!">
+    
+    <!-- Email template - "classic" gives cleaner email format -->
+    <input type="hidden" name="_template" value="classic">
+    
+    <!-- Auto reply to sender (optional) -->
+    <input type="hidden" name="_autoresponse" value="Thank you for contacting Billan! We'll get back to you within 24 hours.">
+    
+    <!-- Enable reCAPTCHA spam protection (free) -->
+    <input type="hidden" name="_captcha" value="true">
+    
+    <!-- Don't send a copy to the submitter -->
+    <input type="hidden" name="_cc" value="">
+    
+    <!-- Exclude these fields from email (they're for spam protection) -->
+    <input type="hidden" name="_honeypot" value="_gotcha">
+    
+    <!-- Name field -->
+    <div class="form-group">
+        <label for="name">
+            <i class="fas fa-user"></i>
+            Your Name
+        </label>
+        <input type="text" id="name" name="name" placeholder="John Doe" required>
+    </div>
+    
+    <!-- Email field -->
+    <div class="form-group">
+        <label for="email">
+            <i class="fas fa-envelope"></i>
+            Email Address
+        </label>
+        <input type="email" id="email" name="email" placeholder="john@example.com" required>
+    </div>
+    
+    <!-- Subject field -->
+    <div class="form-group">
+        <label for="subject">
+            <i class="fas fa-tag"></i>
+            Subject
+        </label>
+        <input type="text" id="subject" name="_subject" placeholder="Project Inquiry">
+        <!-- Note: Using name="_subject" overrides the global subject -->
+    </div>
+    
+    <!-- Message field -->
+    <div class="form-group">
+        <label for="message">
+            <i class="fas fa-comment"></i>
+            Your Message
+        </label>
+        <textarea id="message" name="message" placeholder="Tell us about your project..." required></textarea>
+    </div>
+    
+    <!-- Consent checkbox -->
+    <div class="form-checkbox">
+        <input type="checkbox" id="consent" name="consent" required>
+        <label for="consent">I agree to be contacted regarding my inquiry</label>
+    </div>
+    
+    <!-- Honeypot field for spam prevention (users don't see this) -->
+    <input type="text" name="_honeypot" style="display:none">
+    <!-- The old _gotcha field is removed - FormSubmit uses _honeypot -->
+    
+    <button type="submit" class="btn-submit" id="submitBtn">
+        <span class="btn-text">Send Message</span>
+        <i class="fas fa-paper-plane"></i>
+    </button>
+    
+    <!-- Form status message -->
+    <div class="form-status" id="formStatus"></div>
+</form>
                 </div>
             </div>
         </div>
